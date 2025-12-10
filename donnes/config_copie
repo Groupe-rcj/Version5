@@ -1,0 +1,23 @@
+# Ce fichier est le fichier de configuration du demon systeme de monitor_track (monitor_daemon)
+# Il definit le comportement de ce demon en definissant les seuils que le demon doit respecter
+# Seuls le depassement des seuils dans ce fichier seront journalises dans le journal '/var/log/monitor_track' 
+# Pour plus d'information sur ce demon lancer la commande monitor_track et visiter le menu de documentation
+
+
+# Maximum d'utilisation de chaque coeur en pourcentage 
+PLAFOND_COEUR_CPU=70
+
+# Maximum d'utilisation du Processeur en general (tous les coeurs)
+PLAFOND_CPU_GENERAL=50
+
+# Quantite maximale de RAM utilise en pourcentage
+PLAFOND_RAM=60
+
+# Quantite maximale de RAM utilise en pourcentage
+PLAFOND_SWAP=50
+
+# Plafond de temperature recu par les capteurs present sur la machine en Degre C
+PLAFOND_TEMPERATURE=50
+
+# Intervalle de prise de donnees par defaut toutes les secondes
+INTERVALLE_TEMPS=4

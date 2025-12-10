@@ -1,0 +1,12 @@
+[Unit]
+Description=Demon de monitoring systeme
+After=
+
+[Service]
+Type=simple
+ExecStart=/bin/monitor_track
+User=root
+Restart=Always
+
+[Install]
+WantedBy=multi-user.target

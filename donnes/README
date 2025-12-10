@@ -1,0 +1,96 @@
+MONITOR TRACK — Monitoring Temps Réel du Système (C / POSIX)
+
+Monitor Ttrack est une application système écrite en C pur, capable de surveiller en temps réel les ressources essentielles d’un système Linux.
+Elle repose sur une architecture multithreadée performante et un démon autonome garantissant une supervision continue, même en arrière-plan.
+
+    1. Présentation générale
+
+Application système bas-niveau en C (POSIX).
+
+Monitoring complet : CPU, RAM, réseau, processus, matériel(disque, batterie, temperature).
+
+Architecture modulaire + threads dédiés.
+
+Démon système qui surveille la configuration et relance automatiquement les modules.
+
+Lecture directe via /proc → zéro dépendance externe, rapidité maximale.
+
+    2. Objectifs
+
+Fournir une vue dynamique des ressources système.
+
+Exploiter le multithreading pour éviter tout blocage séquentiel.
+
+Garantir une surveillance continue grâce à un démon indépendant.
+
+    3. Fonctionnalités principales
+-Monitoring système
+
+CPU : analyse de la charge via /proc/stat
+
+RAM : usage mémoire via /proc/meminfo
+
+Réseau : trafic via /proc/net/dev
+
+Processus : infos PID/UID/état/priorité via /proc/[pid]
+
+Matériel : infos via /sys
+
+-Démon config_daemon
+
+Fonctionne en tâche de fond (fork + setsid).
+
+Surveille le fichier de configuration en continu.
+
+Relance automatiquement les modules si la config change.
+
+Redirection des E/S pour fonctionner comme un vrai service.
+
+-Interface CLI
+
+Menu simple et intuitif.
+
+Rafraîchissement automatique.
+
+Commandes non bloquantes pour contrôler facilement les modules.
+
+
+    5. Robustesse & stabilité
+
+Vérification stricte des appels système (pthread_create, malloc, etc.).
+
+Gestion propre de SIGINT pour éviter les arrêts brutaux.
+
+Synchronisation via atomic_store / atomic_load.
+
+Démon protégé contre les fuites d’E/S.
+
+Restauration automatique en cas de suppression de la configuration.
+
+    6. Exécution
+
+Dans le dossier bash_script/ :
+
+./execution         # Compilation
+./monitor_track     # Lancement de l'application
+./monitor_daemon    # Lancement du démon
+
+
+Arrêt/Lancement du démon :
+- Option 3 du menu (root requis).
+
+     7. Originalité du projet
+
+Monitoring entièrement natif : pas de top, ps, free, etc.
+
+Architecture inspirée des superviseurs Linux modernes.
+
+Conception claire, portable, propre et performante.
+
+     8. Auteurs
+
+Projet développé par :
+Jaspy – Robert – Chywwah
+Université d’Antananarivo, 2025
+
+Licence : Libre
